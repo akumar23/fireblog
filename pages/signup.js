@@ -3,12 +3,8 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
 
-import Loader from '../components/Loader';
-
-export default function Home() {
+export default function SignUp() {
   return (
-    <div>
-      <Loader show />
-    </div>
+    <main> Sign Up </main>
   );
 }
