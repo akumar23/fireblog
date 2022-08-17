@@ -4,7 +4,7 @@ import { firestore, auth, serverTimestamp } from '../../lib/firebase';
 
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-
+import UploadImage from '../../components/UploadImage';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useForm } from 'react-hook-form';
 import ReactMarkdown from 'react-markdown';
@@ -35,7 +35,7 @@ function PostManager() {
           <section>
             <h1>{post.title}</h1>
             <p>ID: {post.slug}</p>
-
+            <UploadImage />
             <PostForm postRef={postRef} defaultValues={post} preview={preview} />
           </section>
 
@@ -53,7 +53,8 @@ function PostManager() {
 }
 
 function PostForm({ defaultValues, postRef, preview }) {
-  const { register, handleSubmit, reset, watch } = useForm({ defaultValues, mode: 'onChange' });
+  const { register, handleSubmit, reset, watch, formState: {errors}, formState, } 
+                = useForm({ defaultValues, mode: 'onChange' });
 
   const updatePost = async ({ content, published }) => {
     await postRef.update({
@@ -77,7 +78,14 @@ function PostForm({ defaultValues, postRef, preview }) {
 
       <div className={preview ? styles.hidden : styles.controls}>
   
-        <textarea {...register("content")}></textarea>
+        <textarea 
+        
+            {...register("content", {
+                maxLength: {value: 30000, message: "Content is too long"},
+                required: {value: true, message: "You have to type something"},
+            })}
+
+        > </textarea>
 
         <fieldset>
           <input className={styles.checkbox} name="published" type="checkbox" {...register("published")} />
