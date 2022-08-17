@@ -36,10 +36,6 @@ export async function getStaticPaths() {
   });
 
   return {
-    // must be in this format:
-    // paths: [
-    //   { params: { username, slug }}
-    // ],
     paths,
     fallback: 'blocking',
   };

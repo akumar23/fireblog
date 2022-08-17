@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import Loader from '../components/Loader';
 import { useState } from 'react';
-import { firestore, postToJSON } from '../lib/firebase';
+import { firestore, postToJSON, fromMillis } from '../lib/firebase';
 import Feed from '../components/Feed';
 
 
