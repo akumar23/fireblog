@@ -1,4 +1,4 @@
-import styles from '../../styles/Home.module.css';
+import styles from '../../styles/Admin.module.css';
 import AuthCehck from '../../components/AuthCheck';
 import toast from 'react-hot-toast';
 import { firestore, auth, serverTimestamp } from '../../lib/firebase';
@@ -9,7 +9,7 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../lib/context';
 import kebabCase from 'lodash.kebabcase';
 
-export default function Admin() {
+export default function Admin(props) {
   return (
     <main>
         <AuthCehck>
@@ -58,7 +58,7 @@ function CreatePost() {
             uid,
             username,
             published: false,
-            content: '#text here',
+            content: '# text here',
             createdAt: serverTimestamp(),
             updatedAt: serverTimestamp(),
             heartCount: 0,
@@ -70,10 +70,10 @@ function CreatePost() {
 
         router.push(`/admin/${slug}`);
 
-    }
+    };
 
     return (
-        <form obSubmit={createPost}>
+        <form onSubmit={createPost}>
             <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -85,7 +85,7 @@ function CreatePost() {
                 <strong>Title: </strong> {slug}
             </p>
 
-            <button type="submit" disabled={!isValid} className="btn-gree">
+            <button type="submit" disabled={!isValid} className="btn-green">
                 Create New Post
             </button>
 
