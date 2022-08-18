@@ -4,7 +4,7 @@ import { firestore, postToJSON, fromMillis } from '../lib/firebase';
 import Feed from '../components/Feed';
 
 
-const LIMIT = 1;
+const LIMIT = 3;
 
 export async function getServerSideProps(context) {
 
