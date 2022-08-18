@@ -1,6 +1,4 @@
-import { UserContext } from '../../lib/context';
-import { useContext } from 'react';
-
+import { auth } from '../../lib/firebase';
 import Feed from '../../components/Feed';
 import Profile from '../../components/Profile';
 import { getUserWithUsername, postToJSON } from '../../lib/firebase';
@@ -29,12 +27,17 @@ export async function getServerSideProps({query}) {
     };
 }
 
+function SignOutButton() {
+    return <button onClick={() => auth.signOut()}>Sign Out</button>;
+}
+
 export default function UserProfile({user, posts}) {
 
     return (
         <main>
             <Profile user={user}/>
             <Feed posts={posts}/>
+            <SignOutButton />
         </main>
     )
 }
