@@ -3,6 +3,7 @@
 Full Stack blog app that acts similiarly to medium.com 
 and other similar blog sites
 
+![alt text](https://github.com/akumar23/fireblog/blob/main/fireblog.png)
 
 Uses javascript and node.js and next.js as the backend framework along with firebase for the database to store user data like username, passwords 
 and post data.
