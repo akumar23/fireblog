@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
-import { IoLogoGithub } from 'react-icons/io5'
 
 export default function Navbar() {
     
@@ -12,7 +11,7 @@ export default function Navbar() {
             <ul>
                 <li>
                     <Link href = "https://github.com/akumar23/fireblog">
-                        <button><IoLogoGithub /></button>
+                        <button>Source</button>
                     </Link>
                 </li>
         
